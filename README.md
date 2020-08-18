@@ -6,3 +6,26 @@ D. Lillis, F. Breitinger, M. Scanlon, Expediting MRSH-v2 Approximate Matching wi
 
 D. Lillis, F. Breitinger and M. Scanlon. Hierarchical Bloom Filter Trees for Approximate Matching. Journal of Digital Forensics, Security and Law (JDFSL), 13(1), 2018.
 
+
+
+### Instruções
+### Para compilar
+1. Execute
+```
+cmake ./
+```
+2. Execute
+```
+make
+```
+O executável gerado se encontrará na pasta bin
+
+### Para executar
+1. Execute
+```
+./mrsh-hbft
+```
+
+
+
+
