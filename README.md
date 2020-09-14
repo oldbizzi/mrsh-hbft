@@ -26,6 +26,12 @@ O executável gerado se encontrará na pasta bin
 ./mrsh-hbft
 ```
 
+#### Observações sobre os parâmetros
+
+1.Parâmetros como blocksize e min_run estão definidos no arquivo test.c, e não no config.h
+2.O parâmetro BF_SIZE_IN_BYTES não é utilizado no test.c, apenas no arquivo main.c que supostamente iria ser o novo main mas a mudança não foi realizada ainda.
+3.O parâmetro de memória no test.c é o que muda o tamanho dos filtros a serem utilizados.
+4.Para mudar o tipo de árvore, com filtros variáveis ou fixos, é necessário alterar o define no arquivo config.h
 
 
 
