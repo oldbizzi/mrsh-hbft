@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   bloom.h
  *
  * Created on 17. April 2012, 23:34
@@ -9,13 +9,13 @@
 #ifndef BLOOMFILTER_H
 #define	BLOOMFILTER_H
 
-/* 
+/*
  * We define a struct BLOOM, with all the properties a BLoom-Filter needs.
  */
 typedef struct {
     // Pointer to a byte array
     unsigned char *array;
-    
+
     // We store the number of blocks we add to each filter in count_added_blocks
     unsigned int amount_of_blocks;
 
@@ -32,6 +32,7 @@ typedef struct {
     unsigned long bytes; // number of bytes worth of files this filter represents
 
     unsigned int number_of_files; // number of files this filter represents
+    unsigned char *file_name;
 }BLOOMFILTER;
 
 
@@ -59,4 +60,3 @@ short           count_char_ones( unsigned char c );
 #endif	/* BLOOM_H */
 
 BLOOMFILTER * bf_union( BLOOMFILTER*, BLOOMFILTER*);
-

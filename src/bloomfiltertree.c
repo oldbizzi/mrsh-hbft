@@ -180,9 +180,14 @@ void find(BLOOMFILTER_TREE *bft, FILE_HASH *fh, int i, int *result) {
             fingerprint_against_list_comparison(bft->fpls[i - bft->size / 2], fh->fingerprint);
 #endif
 
+
+
 #ifdef LOGGING
             printf("Leaf %d\n", i - bft->size / 2);
 #endif
+            #ifndef FINGERPRINT_LEAVES
+            printf("%s|%s|6\n",fh->filename,get_leaf_bf(bft,i - bft->size/2)->file_name);
+            #endif
             result[i - bft->size / 2] = true;
         } else {
             find(bft, fh, left(i), result);
@@ -228,7 +233,17 @@ void print_file(FILE_CONTENTS *fc) {
 void hash_file_to_bf(BLOOMFILTER_TREE *bft, int leaf, FILE_CONTENTS *fc) {
 
     FILE_HASH *fh = hash_file(fc);
-    
+
+    // Acrescentei isso pra ter o nome do arquivo inserido no filtro de bloom
+    get_leaf_bf(bft,leaf)->file_name = malloc(sizeof(char) * (strlen(fc->filename) + 1));
+    if (get_leaf_bf(bft,leaf)->file_name == NULL) {
+        fprintf(stderr, "Failed to allocate file name for FILE_CONTENTS\n");
+        exit(1);
+    }
+    strcpy(get_leaf_bf(bft,leaf)->file_name, fc->filename);
+
+
+
     add_file_hash_to_bf(get_leaf_bf(bft, leaf), fh);
 
 #ifdef FINGERPRINT_LEAVES

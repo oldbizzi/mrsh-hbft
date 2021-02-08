@@ -54,28 +54,23 @@ void search_path(BLOOMFILTER_TREE *bft, char *filename){
 
 int main(int argc, char *argv[]) {
 
-    if ( argc == 1 ) {
-        printf("Usage: %s tree_dir search_dir block_size min_run leaf_num", argv[0]);
-        exit(10);
-    }
-
     mode = malloc(sizeof(MODES));
 
-    char *tree_dirname = argv[1];
+    char *tree_dirname = "./src";
 
     // temporary parameters
-    char *search_dirname = argv[2];
+    char *search_dirname = "./src";
 
     // 2: block size (in bytes)
-    mode->block_size = atoi(argv[3]);
+    mode->block_size = 64;
 
     // 3: MIN_RUN
-    mode->min_run = atoi(argv[4]);
+    mode->min_run = 6;
 
     // 4: leaves
-    int leaf_num = atoi(argv[5]);
+    int leaf_num = 16;
 
-    unsigned long mem_upper_limit = 1024ul * 1024ul * 1024ul * 10; // default to 10GiB
+    unsigned long mem_upper_limit = 1024ul * 1024ul * 1024ul * 4; // default to 10GiB
 
     // end temporary parameters
 
